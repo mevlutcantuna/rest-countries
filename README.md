@@ -2,7 +2,7 @@
 
 In this project, I worked with rest countries.
 
-DEMO: ``` https://rest-countries-mct.netlify.app/  ```
+DEPLOY: ``` https://rest-countries-mct.netlify.app/  ```
 
 ### Features
 - Search country with Full name of country
