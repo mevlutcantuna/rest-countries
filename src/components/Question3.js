@@ -55,7 +55,11 @@ const Question3 = () => {
           filteredCountries
             ?.slice((currentPage - 1) * pageSize, pageSize * currentPage)
             .map((item, index) => <Card item={item} key={index} />)}
-        <Pagination
+            
+      </div>
+      <div className="question__pagination">
+        {
+          filteredCountries?.length > 6 && <Pagination
           onChange={handleChangePage}
           defaultCurrent={1}
           pageSizeOptions={[6, 12, 18, 24, 30]}
@@ -63,7 +67,8 @@ const Question3 = () => {
           onShowSizeChange={onShowSizeChange}
           total={filteredCountries && filteredCountries.length}
         />
-      </div>
+        }
+        </div>
     </div>
   );
 };

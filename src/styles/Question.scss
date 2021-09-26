@@ -16,4 +16,11 @@
     align-items: center;
     justify-content: space-evenly;
   }
+
+  &__pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
 }
