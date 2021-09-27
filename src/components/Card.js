@@ -6,11 +6,11 @@ const Card = ({ item }) => {
       <img className="card__image" src={item?.flags?.[0]} alt="flag" />
       <div className="card__header">
         <div>
-          <span> Name:</span> {item?.name?.official}
+          <span> Name:</span> {item?.name}
         </div>
         <div>
           <span>Capital: </span>
-          {item?.capital}{" "}
+          {item?.capital}
         </div>
       </div>
       <div className="card__bottom">

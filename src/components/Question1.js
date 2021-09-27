@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "../styles/Question.scss";
+import { Empty } from "antd";
 
 import SearchBar from "./SearchBar";
+import Card from "./Card";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getOneCountry } from "../store/action";
 
 import { errorMessage } from "../utils/notifications";
 
-import Card from "./Card";
 const Question1 = () => {
   const dispatch = useDispatch();
   const [countryName, setCountryName] = useState("");
@@ -36,7 +37,7 @@ const Question1 = () => {
     <div className="question">
       <SearchBar searchProps={searchProps} />
       <div className="question__cards">
-        {oneCountry && <Card item={oneCountry} />}
+        {oneCountry ? <Card item={oneCountry} /> : <Empty />}
       </div>
     </div>
   );

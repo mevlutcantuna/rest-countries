@@ -9,6 +9,7 @@ import { getListCountries } from "../store/action";
 import { errorMessage } from "../utils/notifications";
 
 import Card from "./Card";
+import { Empty } from "antd";
 
 const Question2 = () => {
   const [countryNames, setCountryNames] = useState("");
@@ -40,10 +41,13 @@ const Question2 = () => {
         * Put a Comma in the Name of the Country's Name
       </span>
       <div className="question__cards">
-        {listCountries &&
+        {listCountries[0].status !== 404 ? (
           listCountries.map((item, index) => (
             <Card item={item[0]} key={index} />
-          ))}
+          ))
+        ) : (
+          <Empty />
+        )}
       </div>
     </div>
   );

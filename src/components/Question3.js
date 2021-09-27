@@ -7,7 +7,7 @@ import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilterCountries } from "../store/action";
 
-import { Pagination } from "antd";
+import { Empty, Pagination } from "antd";
 
 const Question3 = () => {
   const [filterWord, setFilterWord] = useState("");
@@ -51,24 +51,28 @@ const Question3 = () => {
     <div>
       <SearchBar searchProps={searchProps} />
       <div className="question__cards">
-        {filteredCountries &&
+        {filteredCountries?.status !== 404 ? (
           filteredCountries
             ?.slice((currentPage - 1) * pageSize, pageSize * currentPage)
-            .map((item, index) => <Card item={item} key={index} />)}
-            
+            .map((item, index) => <Card item={item} key={index} />)
+        ) : (
+          <div>
+            <Empty />
+          </div>
+        )}
       </div>
       <div className="question__pagination">
-        {
-          filteredCountries?.length > 6 && <Pagination
-          onChange={handleChangePage}
-          defaultCurrent={1}
-          pageSizeOptions={[6, 12, 18, 24, 30]}
-          showSizeChanger
-          onShowSizeChange={onShowSizeChange}
-          total={filteredCountries && filteredCountries.length}
-        />
-        }
-        </div>
+        {filteredCountries?.length > 6 && (
+          <Pagination
+            onChange={handleChangePage}
+            defaultCurrent={1}
+            pageSizeOptions={[6, 12, 18, 24, 30]}
+            showSizeChanger
+            onShowSizeChange={onShowSizeChange}
+            total={filteredCountries && filteredCountries.length}
+          />
+        )}
+      </div>
     </div>
   );
 };
