@@ -51,7 +51,7 @@ const Question3 = () => {
     <div>
       <SearchBar searchProps={searchProps} />
       <div className="question__cards">
-        {filteredCountries?.status !== 404 ? (
+        {filteredCountries ? (
           filteredCountries
             ?.slice((currentPage - 1) * pageSize, pageSize * currentPage)
             .map((item, index) => <Card item={item} key={index} />)

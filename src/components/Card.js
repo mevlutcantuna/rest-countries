@@ -6,7 +6,7 @@ const Card = ({ item }) => {
       <img className="card__image" src={item?.flags?.[0]} alt="flag" />
       <div className="card__header">
         <div>
-          <span> Name:</span> {item?.name}
+          <span> Name:</span> {item?.name.common}
         </div>
         <div>
           <span>Capital: </span>

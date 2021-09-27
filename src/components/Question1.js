@@ -33,7 +33,7 @@ const Question1 = () => {
     inputValue: countryName,
   };
 
-  return (
+  return ( 
     <div className="question">
       <SearchBar searchProps={searchProps} />
       <div className="question__cards">

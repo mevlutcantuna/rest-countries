@@ -29,8 +29,8 @@ export const getOneCountry = (countryName) => async (dispatch) => {
       errorMessage("Not Found Country.Please Fill Full Name of Country...");
     }
   } catch (err) {
-    dispatch({ type: GET_ONE_COUNTRY_ERROR, err: err.message });
-    return errorMessage(err.message);
+    dispatch({ type: GET_ONE_COUNTRY_ERROR, err: err.response.data.message });
+    return errorMessage(err.response.data.message);
   }
 };
 
@@ -42,12 +42,13 @@ export const getListCountries = (countryNames) => async (dispatch) => {
     let listCountries = [];
     for (const item in names) {
       const response = await instance.get(`/name/${names[item].trim()}`);
+      console.log(response)
       listCountries = [...listCountries, response.data];
     }
     dispatch({ type: GET_LIST_COUNTRIES_SUCCESS, payload: listCountries });
   } catch (err) {
-    dispatch({ type: GET_LIST_COUNTRIES_ERROR, payload: err.message });
-    return errorMessage(err.message);
+    dispatch({ type: GET_LIST_COUNTRIES_ERROR, payload: err.response.data.message });
+    return errorMessage(err.response.data.message);
   }
 };
 
@@ -62,6 +63,7 @@ export const getFilterCountries = (filterWord) => async (dispatch) => {
       dispatch({ type: GET_FILTER_COUNTRIES_SUCCESS, payload: response.data });
     }
   } catch (err) {
-    dispatch({ type: GET_FILTER_COUNTRIES_ERROR, payload: err.message });
+    dispatch({ type: GET_FILTER_COUNTRIES_ERROR, payload: err.response.data.message });
+    return errorMessage(err.response.data.message);
   }
 };
