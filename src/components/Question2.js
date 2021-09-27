@@ -41,7 +41,7 @@ const Question2 = () => {
         * Put a Comma in the Name of the Country's Name
       </span>
       <div className="question__cards">
-        {listCountries[0].status !== 404 ? (
+        {listCountries[0]?.status !== 404 ? (
           listCountries.map((item, index) => (
             <Card item={item[0]} key={index} />
           ))
